@@ -9,6 +9,71 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Demo cards with embedded iframes */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 960px;
+      margin: 48px auto 0;
+    }
+    .demo-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-info {
+      padding: 24px 24px 16px;
+    }
+    .demo-info h4 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      margin: 8px 0;
+    }
+    .demo-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .demo-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #1a1a2e;
+      border-top: 1px solid var(--border);
+    }
+    .demo-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .demo-fullscreen {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-top: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .demo-fullscreen:hover {
+      background: var(--accent-soft);
+    }
+    @media (max-width: 700px) {
+      .demo-grid { grid-template-columns: 1fr; }
+      .demo-embed { aspect-ratio: 9/16; }
+    }
+  </style>
 </head>
 <body>
 
@@ -43,6 +108,49 @@
           <a href="#pricing" class="btn btn-primary btn-lg">查看方案</a>
           <a href="#themes" class="btn btn-ghost btn-lg">熱門主題</a>
         </div>
+      </div>
+    </section>
+
+    <!-- Live demos (embedded) -->
+    <section class="tight" style="background:var(--surface);">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Try it now</p>
+          <h2>直接跟他們聊聊看</h2>
+          <p class="lead">兩個實際做過的角色。點進去就能開始對話，聊個幾句就知道成品長什麼樣。</p>
+        </div>
+
+        <div class="demo-grid">
+
+          <div class="demo-card">
+            <div class="demo-info">
+              <span class="tag">寵物擬人</span>
+              <h4>Oreo</h4>
+              <p>同事家的狗狗擬人化。有自己的個性、口頭禪、偷吃紀錄和討厭的鄰居。</p>
+            </div>
+            <div class="demo-embed">
+              <iframe src="https://mr-yes-chat.vercel.app/oreo" title="跟 Oreo 對話" allow="microphone; camera" loading="lazy"></iframe>
+            </div>
+            <a href="https://mr-yes-chat.vercel.app/oreo" target="_blank" rel="noopener" class="demo-fullscreen">在新視窗開啟 ↗</a>
+          </div>
+
+          <div class="demo-card">
+            <div class="demo-info">
+              <span class="tag">品牌吉祥物</span>
+              <h4>Dan</h4>
+              <p>YES 先生婚禮錄影的吉祥物。工作專業、話家常好聊，品牌角色的示範。</p>
+            </div>
+            <div class="demo-embed">
+              <iframe src="https://mr-yes-chat.vercel.app/dan" title="跟 Dan 對話" allow="microphone; camera" loading="lazy"></iframe>
+            </div>
+            <a href="https://mr-yes-chat.vercel.app/dan" target="_blank" rel="noopener" class="demo-fullscreen">在新視窗開啟 ↗</a>
+          </div>
+
+        </div>
+
+        <p style="text-align:center; color:var(--text-secondary); font-size:0.85rem; margin-top:28px;">
+          體驗版，每人每日限次數。想做自己的角色？<a href="#pricing" style="color:var(--accent);">往下看方案</a>
+        </p>
       </div>
     </section>
 
@@ -86,39 +194,6 @@
         <div class="callout">
           <strong>不知道要做什麼？</strong>下單時填問卷就好，我會依你的用途、送給誰、想要的氣氛，幫你把角色設定完整。第一次的靈感不用怕不成熟，我們一起磨。
         </div>
-      </div>
-    </section>
-
-    <!-- Try it now (live demos) -->
-    <section class="tight" style="background:var(--surface);">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">Try it now</p>
-          <h2>現在就試試看</h2>
-          <p class="lead">兩個實際做過的角色放在這裡讓你試玩，跟他們聊個幾句，就知道成品長什麼樣。</p>
-        </div>
-
-        <div class="feature-list" style="grid-template-columns:repeat(2, 1fr); max-width:800px; margin:48px auto 0;">
-
-          <div class="feature" style="background:var(--bg); padding:32px 28px; border-radius:var(--radius); border:1px solid var(--border); text-align:center;">
-            <p class="tag">寵物擬人</p>
-            <h4 style="margin-bottom:12px;">🐕 Oreo</h4>
-            <p style="min-height:80px;">同事家的狗狗擬人化。個性、口頭禪、討厭的鄰居、偷吃紀錄全都有。同事第一次玩到崩潰笑出來。</p>
-            <a href="https://mr-yes-chat.vercel.app/oreo" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;">跟 Oreo 聊聊 →</a>
-          </div>
-
-          <div class="feature" style="background:var(--bg); padding:32px 28px; border-radius:var(--radius); border:1px solid var(--border); text-align:center;">
-            <p class="tag">品牌吉祥物</p>
-            <h4 style="margin-bottom:12px;">🎩 Dan</h4>
-            <p style="min-height:80px;">YES 先生婚禮錄影的吉祥物。工作時很專業、話家常時很好聊，示範品牌代言角色能做到什麼程度。</p>
-            <a href="https://mr-yes-chat.vercel.app/dan" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;">跟 Dan 聊聊 →</a>
-          </div>
-
-        </div>
-
-        <p class="text-center text-muted" style="margin-top:32px; font-size:0.9rem;">
-          💡 提醒：這兩個是體驗版，每人每日限次數。想做自己的角色請往下看方案。
-        </p>
       </div>
     </section>
 
