@@ -1,0 +1,27 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/guestars", "destination": "/guestars.html", "permanent": false },
+    { "source": "/drinkcam", "destination": "/drinkcam.html", "permanent": false },
+    { "source": "/virtualchar", "destination": "/virtualchar.html", "permanent": false },
+    { "source": "/privacy", "destination": "/privacy.html", "permanent": false },
+    { "source": "/terms", "destination": "/terms.html", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

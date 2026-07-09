@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>斌先生工作室 · Studio — 用 AI 做有溫度的現場體驗</title>
+  <meta name="description" content="斌先生工作室 · Studio。GUESTARS 婚禮 AI 影片、drinkcam 多機直播、虛擬人物即時對話，讓每一場活動裡的每一個賓客都成為主角。">
+  <meta property="og:title" content="斌先生工作室 · Studio">
+  <meta property="og:description" content="用 AI 做有溫度的現場體驗">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hero with video */
+    .hero-with-media {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-media {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-med);
+      aspect-ratio: 16/10;
+      background: var(--surface);
+    }
+    .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 900px) {
+      .hero-with-media { grid-template-columns: 1fr; gap: 32px; }
+    }
+    /* Compact about */
+    .about-compact {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      align-items: start;
+      max-width: 720px;
+    }
+    .about-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--accent-soft);
+    }
+    .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .about-compact h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .about-compact p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .about-compact p + p { margin-top: 8px; }
+    @media (max-width: 600px) {
+      .about-compact { grid-template-columns: 80px 1fr; gap: 16px; }
+      .about-avatar { width: 80px; height: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav>
+      <a href="/" class="brand">
+        <span class="brand-name">斌先生工作室</span>
+        <span class="brand-sub">· Studio</span>
+      </a>
+      <div class="nav-links">
+        <a href="#products">產品</a>
+        <a href="/guestars.html">GUESTARS</a>
+        <a href="/drinkcam.html">drinkcam</a>
+        <a href="/virtualchar.html">虛擬對話</a>
+        <a href="#contact">聯絡</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero with video -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-with-media">
+          <div>
+            <p class="eyebrow">斌先生工作室 · Studio</p>
+            <h1>用 AI 做有溫度的<br>現場體驗</h1>
+            <p class="lead">婚禮、企業活動、家庭聚會——只要有人在場，就有可以放進魔法的地方。我們用 AI 讓每一個賓客，都有機會變成當天的主角。</p>
+            <div class="cta-group">
+              <a href="#products" class="btn btn-primary btn-lg">看看產品</a>
+              <a href="#contact" class="btn btn-ghost btn-lg">聊聊你的活動</a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <video autoplay muted loop playsinline
+              poster="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_800,q_auto/v1775562006/%E7%8F%BE%E5%A0%B4%E6%B0%A3%E6%B0%9B_xj6jec.jpg"
+              src="https://res.cloudinary.com/dmofz59ft/video/upload/v1775562006/%E7%8F%BE%E5%A0%B4%E6%B0%A3%E6%B0%9B_xj6jec.mov">
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products (main draw, moved up) -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">我們正在做的事</p>
+          <h2>三條產品線</h2>
+          <p class="lead">婚禮、活動、送禮，各自對到一條路。點進去看方案、示範、或直接下單。</p>
+        </div>
+        <div class="product-grid">
+
+          <article class="product-card">
+            <span class="tag">婚禮 · AI 影片</span>
+            <h3>GUESTARS</h3>
+            <p class="tagline">Every Guest. A Star.</p>
+            <p class="desc">賓客拍照，AI 即時變身，你決定何時讓全場沸騰。42+ 種主題、抽獎模式、Co-Star 同框——把婚宴變成一場沒有觀眾的表演。</p>
+            <p class="price">NT$6,000 起 / 場</p>
+            <a href="/guestars.html" class="card-link">了解 GUESTARS →</a>
+          </article>
+
+          <article class="product-card">
+            <span class="tag">現場 · 多機直播</span>
+            <h3>drinkcam</h3>
+            <p class="tagline">你的活動，你自己導播</p>
+            <p class="desc">用多支手機當直播鏡頭，透過筆電導播上大螢幕。不再需要昂貴的直播團隊，還能加值互動：賓客抽獎、共鏡輪播、進場合拍。可選加租高階 WiFi 機。</p>
+            <p class="price">NT$1,800 起 / 日</p>
+            <a href="/drinkcam.html" class="card-link">了解 drinkcam →</a>
+          </article>
+
+          <article class="product-card">
+            <span class="tag">送禮 · 即時對話</span>
+            <h3>虛擬人物對話</h3>
+            <p class="tagline">Realtime AI Character</p>
+            <p class="desc">把你家的寵物擬人化、把想念的家人、把喜歡的角色，做成一個能即時對話的專屬網址。photoreal 人物、量身訂做個性，送禮、紀念、活動彩蛋都對味。</p>
+            <p class="price">NT$3,800 起 / 角色</p>
+            <a href="/virtualchar.html" class="card-link">了解虛擬對話 →</a>
+          </article>
+
+        </div>
+
+        <div class="callout" style="margin-top:48px; max-width:800px; margin-left:auto; margin-right:auto;">
+          <strong>更多正在孵化中：</strong>結合 AI 的婚禮影片自動剪輯、3D 列印周邊、活動策劃工具等等，正在開發路上。想第一時間知道？<a href="#contact" style="color:var(--accent);">留下 email 讓我通知你</a>。
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section class="who">
+      <div class="container">
+        <p class="eyebrow">一起工作的人</p>
+        <h2>我們為誰做</h2>
+        <div class="who-grid">
+          <div class="who-item">
+            <h4>新人 · 婚禮</h4>
+            <p>想讓婚禮多一點意料之外火花的新人。</p>
+          </div>
+          <div class="who-item">
+            <h4>婚顧 · 主持人</h4>
+            <p>需要新玩法為場子加分的合作夥伴。</p>
+          </div>
+          <div class="who-item">
+            <h4>活動企劃</h4>
+            <p>做尾牙、發表會、記者會，想突破預算限制的策劃者。</p>
+          </div>
+          <div class="who-item">
+            <h4>品牌 · 企業</h4>
+            <p>想讓觀眾成為故事主角、活動被記得的品牌方。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compact About (moved after products) -->
+    <section class="about tight" id="about">
+      <div class="container">
+        <p class="eyebrow">關於工作室</p>
+        <div class="about-compact">
+          <div class="about-avatar">
+            <img src="https://res.cloudinary.com/dmofz59ft/image/upload/w_200,h_200,c_fill,g_face,q_auto/v1775480224/%E9%98%BF%E6%96%8C_yod50g.webp" alt="阿斌">
+          </div>
+          <div>
+            <h3>斌先生工作室 · Studio</h3>
+            <p>婚禮錄影 SDE 做了十多年，陪過快三百對新人。從 GUESTARS 開始，把 AI 帶進婚禮現場，讓賓客從觀眾變成故事的一部分。</p>
+            <p>不是大公司的產品，是一個影像職人跟 AI 工具一起做的事。想聊聊你的活動，隨時來信。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="eyebrow">聊聊</p>
+        <h2>有問題？想聊聊你的活動？</h2>
+        <p class="lead">業者合作、技術諮詢、客製需求都歡迎來信。我會在 24 小時內回覆你的信箱。</p>
+
+        <form class="contact-form" action="/api/contact" method="POST">
+          <div class="form-row">
+            <label for="name">您的名稱</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="type">諮詢類型</label>
+            <select id="type" name="type">
+              <option>一般諮詢</option>
+              <option>婚顧 / 主持人合作</option>
+              <option>企業活動 / 品牌合作</option>
+              <option>客製化需求</option>
+              <option>技術問題</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">訊息內容</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">📩 送出訊息</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="brand-name">斌先生工作室 · Studio</p>
+        <p class="tagline">用 AI 做有溫度的現場體驗</p>
+      </div>
+      <div class="footer-products">
+        <p class="footer-heading">產品</p>
+        <a href="/guestars.html">GUESTARS</a>
+        <a href="/drinkcam.html">drinkcam</a>
+        <a href="/virtualchar.html">虛擬對話</a>
+        <a href="#contact">保持聯繫</a>
+      </div>
+      <div class="footer-legal">
+        <p class="footer-heading">法務與聯絡</p>
+        <a href="/privacy.html">隱私權政策</a>
+        <a href="/terms.html">服務條款</a>
+        <address class="contact-info">
+          斌先生創意工作室<br>
+          統編 61426073<br>
+          桃園市桃園區介壽路 495 巷 67 號 14 樓<br>
+          Tel 0909-080-233<br>
+          Email wubskimo0424@gmail.com
+        </address>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 斌先生創意工作室. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
