@@ -23,10 +23,11 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-med);
-      aspect-ratio: 16/10;
-      background: var(--surface);
+      aspect-ratio: 4/5;
+      background: var(--gs-navy);
+      max-height: 520px;
     }
-    .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-media video { width: 100%; height: 100%; object-fit: contain; display: block; }
     @media (max-width: 900px) {
       .hero-with-media { grid-template-columns: 1fr; gap: 32px; }
     }
