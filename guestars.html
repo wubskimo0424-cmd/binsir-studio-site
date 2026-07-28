@@ -306,7 +306,7 @@
               <li>GUESTARS 遠端技術支援</li>
               <li>超額加購 NT$100 / 支</li>
             </ul>
-            <a href="#order" class="btn btn-primary">立即購買</a>
+            <a href="https://guestars.app/guestars/buy?plan=single" class="btn btn-primary">立即購買</a>
           </div>
 
           <div class="pricing-plan">
@@ -361,45 +361,21 @@
           <div class="step"><span class="step-num">4</span><h4>收到網址</h4><p>系統自動寄送</p></div>
         </div>
 
-        <!-- 訂購表單 -->
-        <form class="contact-form" style="margin-top:64px;" action="/api/order/guestars" method="POST">
-          <div class="form-row">
-            <label for="plan">選擇方案</label>
-            <select id="plan" name="plan" required>
-              <option value="standalone">單場獨立方案 · NT$15,000</option>
-              <option value="bundle">搭售方案（YES 先生婚禮錄影） · NT$6,000</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="couple">新人姓名</label>
-            <input type="text" id="couple" name="couple" placeholder="例：小明 &amp; 小美" required>
-          </div>
-          <div class="form-row">
-            <label for="wedding_date">宴客日期</label>
-            <input type="date" id="wedding_date" name="wedding_date" required>
-          </div>
-          <div class="form-row">
-            <label for="order_email">聯絡 Email</label>
-            <input type="email" id="order_email" name="email" required>
-          </div>
-          <div class="form-row">
-            <label for="phone">聯絡手機</label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-          <div class="form-row">
-            <label for="note">備註（選填）</label>
-            <textarea id="note" name="note" rows="4"></textarea>
-          </div>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
-            點擊付款即表示您同意
+        <!-- 前往結帳頁（填資料與付款於 guestars.app 完成，同網域處理金流） -->
+        <div style="text-align:center; margin-top:56px;">
+          <a href="https://guestars.app/guestars/buy?plan=single" class="btn btn-primary btn-lg">
+            立即購買 · 線上刷卡 →
+          </a>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:20px;">
+            付款成功後，系統自動開房並寄送四個專屬網址至您的 Email。
+          </p>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+            結帳頁將由綠界 ECPay 處理付款，本站不接觸卡號。<br>
+            送出訂單即表示您同意
             <a href="/terms" style="color:var(--accent);">服務條款</a> 及
             <a href="/privacy" style="color:var(--accent);">隱私權政策</a>。
           </p>
-          <button type="submit" class="btn btn-primary btn-lg">前往付款</button>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:16px;">
-            付款成功後系統自動寄送四個專屬網址至您的 Email。
-          </p>
-        </form>
+        </div>
       </div>
     </section>
 

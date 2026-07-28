@@ -513,45 +513,24 @@
           <p class="lead">單場日租直接下單付款；年費訂閱與加購請填表，我 24 小時內回覆確認後開通。</p>
         </div>
 
-        <form class="contact-form" action="/api/order/drinkcam" method="POST">
-          <div class="form-row">
-            <label for="plan">選擇方案</label>
-            <select id="plan" name="plan" required>
-              <option value="day_basic">單日基本 · NT$1,800</option>
-              <option value="day_bundle">單日套裝（含 WiFi） · NT$2,800</option>
-              <option value="year_basic">年費基本訂閱 · NT$18,000</option>
-              <option value="year_pro">年費進階訂閱 · NT$36,000</option>
-              <option value="wifi_only">單獨租 WiFi 機 · NT$1,500/日</option>
-              <option value="custom">婚企 / 婚顧合作方案洽談</option>
-            </select>
+        <!-- 前往結帳頁（填資料與付款於 guestars.app 完成，同網域處理金流） -->
+        <div style="text-align:center; margin-top:48px;">
+          <div class="cta-group" style="justify-content:center; margin-top:0;">
+            <a href="https://guestars.app/drinkcam/buy" class="btn btn-primary btn-lg">
+              立即購買 · 線上刷卡 →
+            </a>
+            <a href="/#contact" class="btn btn-ghost btn-lg">WiFi 機 / 合作方案洽詢</a>
           </div>
-          <div class="form-row">
-            <label for="event_date">活動日期（單日方案）</label>
-            <input type="date" id="event_date" name="event_date">
-          </div>
-          <div class="form-row">
-            <label for="dcam_name">您的名稱 / 公司</label>
-            <input type="text" id="dcam_name" name="name" required>
-          </div>
-          <div class="form-row">
-            <label for="dcam_email">Email</label>
-            <input type="email" id="dcam_email" name="email" required>
-          </div>
-          <div class="form-row">
-            <label for="dcam_phone">聯絡手機</label>
-            <input type="tel" id="dcam_phone" name="phone" required>
-          </div>
-          <div class="form-row">
-            <label for="dcam_note">備註 / 需求</label>
-            <textarea id="dcam_note" name="note" rows="4" placeholder="活動類型、預計手機數、地點等"></textarea>
-          </div>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
-            點擊付款即表示您同意
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:24px;">
+            刷卡完成後，授權碼會立即自動寄到您的 Email，不需等待人工處理。
+          </p>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+            結帳頁將由綠界 ECPay 處理付款，本站不接觸卡號。<br>
+            送出訂單即表示您同意
             <a href="/terms" style="color:var(--accent);">服務條款</a> 及
             <a href="/privacy" style="color:var(--accent);">隱私權政策</a>。
           </p>
-          <button type="submit" class="btn btn-primary btn-lg">前往付款 / 洽詢</button>
-        </form>
+        </div>
       </div>
     </section>
 
