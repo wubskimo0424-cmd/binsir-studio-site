@@ -201,7 +201,7 @@
         <h2>有問題？想聊聊你的活動？</h2>
         <p class="lead">業者合作、技術諮詢、客製需求都歡迎來信。我會在 24 小時內回覆你的信箱。</p>
 
-        <form class="contact-form" action="/api/contact" method="POST">
+        <form class="contact-form" id="contactForm">
           <div class="form-row">
             <label for="name">您的名稱</label>
             <input type="text" id="name" name="name" required>
@@ -225,6 +225,11 @@
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg">📩 送出訊息</button>
+          <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:16px;">
+            送出後會開啟您的郵件軟體，確認內容後寄出即可。<br>
+            也可以直接來信
+            <a href="mailto:wubskimo0424@gmail.com" style="color:var(--accent);">wubskimo0424@gmail.com</a>。
+          </p>
         </form>
       </div>
     </section>
@@ -261,6 +266,37 @@
       <p>© 2026 斌先生創意工作室. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // 聯絡表單：官網為靜態站（無後端），改以使用者的郵件軟體寄出，
+    // 收件人即為官網聯絡信箱。避免表單送出後無人收件。
+    (function () {
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var name    = (form.name.value    || '').trim();
+        var email   = (form.email.value   || '').trim();
+        var type    = form.type.value     || '一般諮詢';
+        var message = (form.message.value || '').trim();
+
+        var subject = '【官網諮詢】' + type + ' — ' + name;
+        var body    =
+          '諮詢類型：' + type + '\n' +
+          '姓名：'     + name + '\n' +
+          'Email：'    + email + '\n' +
+          '\n─────────────\n\n' +
+          message + '\n';
+
+        window.location.href =
+          'mailto:wubskimo0424@gmail.com' +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body='    + encodeURIComponent(body);
+      });
+    })();
+  </script>
 
 </body>
 </html>
