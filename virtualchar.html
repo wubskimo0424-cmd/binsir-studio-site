@@ -333,7 +333,7 @@
               <li>Email 使用說明</li>
               <li>1 次角色微調機會</li>
             </ul>
-            <a href="#order" class="btn btn-ghost">選這個方案 →</a>
+            <a href="https://guestars.app/virtualchar/buy?plan=gift" class="btn btn-ghost">選這個方案 →</a>
           </div>
 
           <div class="pricing-plan recommended">
@@ -349,7 +349,7 @@
               <li>2 次角色微調機會</li>
               <li>優先建置（3-5 個工作天）</li>
             </ul>
-            <a href="#order" class="btn btn-primary">選這個方案 →</a>
+            <a href="https://guestars.app/virtualchar/buy?plan=event" class="btn btn-primary">選這個方案 →</a>
           </div>
 
           <div class="pricing-plan">
@@ -365,7 +365,7 @@
               <li>高並發應對建議</li>
               <li>無限次角色微調</li>
             </ul>
-            <a href="#order" class="btn btn-ghost">洽談合作 →</a>
+            <a href="/#contact" class="btn btn-ghost">洽談合作 →</a>
           </div>
 
         </div>
@@ -402,44 +402,28 @@
           <p class="lead">付款成功後 5 分鐘內收到問卷連結，填完問卷 3-7 個工作天內交付專屬對話網址。</p>
         </div>
 
-        <form class="contact-form" action="/api/order/virtualchar" method="POST">
-          <div class="form-row">
-            <label for="plan">選擇方案</label>
-            <select id="plan" name="plan" required>
-              <option value="gift">送禮 · 紀念版 · NT$3,800</option>
-              <option value="event">活動 · 派對版 · NT$5,800</option>
-              <option value="pro">現場 · 公開版 · NT$12,000 起（另議）</option>
-              <option value="topup">加購對話成本包 · NT$1,500</option>
-              <option value="extend">加購有效期延長 · NT$500 / 30 天</option>
-            </select>
+        <!-- 前往結帳頁（填資料與付款於 guestars.app 完成，同網域處理金流） -->
+        <div style="text-align:center; margin-top:48px;">
+          <div class="cta-group" style="justify-content:center; margin-top:0;">
+            <a href="https://guestars.app/virtualchar/buy?plan=gift" class="btn btn-ghost btn-lg">
+              送禮 · 紀念版 NT$3,800
+            </a>
+            <a href="https://guestars.app/virtualchar/buy?plan=event" class="btn btn-primary btn-lg">
+              活動 · 派對版 NT$5,800
+            </a>
           </div>
-          <div class="form-row">
-            <label for="vc_purpose">用途（一句話就好）</label>
-            <input type="text" id="vc_purpose" name="purpose" placeholder="例：媽媽 60 歲生日禮物 / 12/24 婚禮彩蛋 / 品牌活動" required>
-          </div>
-          <div class="form-row">
-            <label for="vc_name">您的名稱</label>
-            <input type="text" id="vc_name" name="name" required>
-          </div>
-          <div class="form-row">
-            <label for="vc_email">Email（問卷與交付網址寄送到這裡）</label>
-            <input type="email" id="vc_email" name="email" required>
-          </div>
-          <div class="form-row">
-            <label for="vc_phone">聯絡手機</label>
-            <input type="tel" id="vc_phone" name="phone" required>
-          </div>
-          <div class="form-row">
-            <label for="vc_note">備註 / 特殊需求</label>
-            <textarea id="vc_note" name="note" rows="4" placeholder="想做什麼角色、需要什麼調性、有無時程壓力..."></textarea>
-          </div>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
-            點擊付款即表示您同意
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:24px;">
+            付款成功後 5 分鐘內收到需求問卷連結，填完問卷 3-7 個工作天內交付專屬對話網址。
+          </p>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+            現場 · 公開版與加購項目請
+            <a href="/#contact" style="color:var(--accent);">來信洽談</a>。<br>
+            結帳頁將由綠界 ECPay 處理付款，本站不接觸卡號。<br>
+            送出訂單即表示您同意
             <a href="/terms" style="color:var(--accent);">服務條款</a> 及
             <a href="/privacy" style="color:var(--accent);">隱私權政策</a>。
           </p>
-          <button type="submit" class="btn btn-primary btn-lg">前往付款</button>
-        </form>
+        </div>
       </div>
     </section>
 
