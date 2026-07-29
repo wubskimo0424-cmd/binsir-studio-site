@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>斌先生工作室 · Studio — 用 AI 做有溫度的現場體驗</title>
-  <meta name="description" content="斌先生工作室 · Studio。GUESTARS 婚禮 AI 影片、drinkcam 多機直播、虛擬人物即時對話，讓每一場活動裡的每一個賓客都成為主角。">
+  <meta name="description" content="斌先生工作室 · Studio。GUESTARS 婚禮 AI 影片、drinkcam 多機直播、互動電話賓客留言、虛擬人物即時對話，讓每一場活動裡的每一個賓客都成為主角。">
   <meta property="og:title" content="斌先生工作室 · Studio">
   <meta property="og:description" content="用 AI 做有溫度的現場體驗">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +58,12 @@
       .about-compact { grid-template-columns: 80px 1fr; gap: 16px; }
       .about-avatar { width: 80px; height: 80px; }
     }
+    /* 四條產品線：寬螢幕四欄，中等寬度 2×2，手機單欄 */
+    .product-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-grid .product-card { padding: 32px 24px; }
+    @media (max-width: 1100px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
   </style>
 </head>
 <body>
@@ -72,6 +78,7 @@
         <a href="#products">產品</a>
         <a href="/guestars">GUESTARS</a>
         <a href="/drinkcam">drinkcam</a>
+        <a href="/phone">互動電話</a>
         <a href="/virtualchar">虛擬對話</a>
         <a href="#contact">聯絡</a>
       </div>
@@ -111,8 +118,8 @@
       <div class="container">
         <div class="section-header">
           <p class="eyebrow">我們正在做的事</p>
-          <h2>三條產品線</h2>
-          <p class="lead">婚禮、活動、送禮，各自對到一條路。點進去看方案、示範、或直接下單。</p>
+          <h2>四條產品線</h2>
+          <p class="lead">婚禮、活動、留言、送禮，各自對到一條路。點進去看方案、示範、或直接下單。</p>
         </div>
         <div class="product-grid">
 
@@ -132,6 +139,15 @@
             <p class="desc">用多支手機當直播鏡頭，透過筆電導播上大螢幕。不再需要昂貴的直播團隊，還能加值互動：賓客抽獎、共鏡輪播、進場合拍。可選加租高階 WiFi 機。</p>
             <p class="price">NT$1,800 起 / 日</p>
             <a href="/drinkcam" class="card-link">了解 drinkcam →</a>
+          </article>
+
+          <article class="product-card">
+            <span class="tag">現場 · 賓客留言</span>
+            <h3>互動電話</h3>
+            <p class="tagline">拿起話筒說句話</p>
+            <p class="desc">賓客拿起復古話筒留下祝福，影片<strong>即時上雲</strong>——不用等活動結束、不用等寄還機器，當天就能在專頁看與下載。可升級 AI 版，讓話筒那頭真的回你話。</p>
+            <p class="price">NT$4,800 起 / 場</p>
+            <a href="/phone" class="card-link">了解互動電話 →</a>
           </article>
 
           <article class="product-card">
@@ -246,6 +262,7 @@
         <p class="footer-heading">產品</p>
         <a href="/guestars">GUESTARS</a>
         <a href="/drinkcam">drinkcam</a>
+        <a href="/phone">互動電話</a>
         <a href="/virtualchar">虛擬對話</a>
         <a href="#contact">保持聯繫</a>
       </div>

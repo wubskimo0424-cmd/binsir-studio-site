@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>互動電話 — 賓客留言即時上雲，當天就看得到｜斌先生工作室</title>
+  <meta name="description" content="婚禮互動電話出租。賓客拿起話筒留下祝福，影片即時上傳雲端，活動當天就能在專頁觀看與下載。可升級 AI 即時對話。復古電話留言機的進化版。">
+  <meta property="og:title" content="互動電話 · 賓客留言即時上雲">
+  <meta property="og:description" content="別人活動後才給檔案，我們當天就看得到。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 對照表：我們 vs 一般留言機 */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 48px auto 0;
+    }
+    .compare-col {
+      padding: 32px 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .compare-col.ours {
+      background: var(--surface);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-med);
+    }
+    .compare-col h4 {
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-col.ours h4 { color: var(--accent); }
+    .compare-col ul { list-style: none; }
+    .compare-col li {
+      padding: 9px 0 9px 26px;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .compare-col li::before {
+      position: absolute;
+      left: 0;
+      top: 9px;
+    }
+    .compare-col.ours li::before { content: "●"; color: var(--accent); font-size: 0.7rem; top: 12px; }
+    .compare-col.theirs li::before { content: "○"; color: var(--text-muted); font-size: 0.7rem; top: 12px; }
+
+    /* 步驟流程 */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .flow-item {
+      text-align: center;
+      padding: 28px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .flow-item .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-serif);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .flow-item h4 { font-size: 1.05rem; margin-bottom: 8px; }
+    .flow-item p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    @media (max-width: 900px) {
+      .compare { grid-template-columns: 1fr; }
+      .flow-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .flow-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav>
+      <a href="/" class="brand">
+        <span class="brand-name">斌先生工作室</span>
+        <span class="brand-sub">· Studio</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#products">產品</a>
+        <a href="/guestars">GUESTARS</a>
+        <a href="/drinkcam">drinkcam</a>
+        <a href="/phone" class="active">互動電話</a>
+        <a href="/virtualchar">虛擬對話</a>
+        <a href="/#contact">聯絡</a>
+      </div>
+      <button class="nav-toggle" aria-label="選單" onclick="this.classList.toggle('active');this.previousElementSibling.classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">☎️ Interactive Phone · 互動電話</p>
+        <h1>拿起話筒說句話，<br>你當天就看得到。</h1>
+        <p class="lead">賓客拿起復古話筒，留下一段祝福，掛回去——影片<strong>即時上傳雲端</strong>，你在專頁上馬上就能看、能下載。不用等活動結束，不用等寄還機器。</p>
+        <div class="cta-group">
+          <a href="https://guestars.app/rental/buy" class="btn btn-primary btn-lg">立即租用</a>
+          <a href="#how" class="btn btn-ghost btn-lg">怎麼運作</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 差異對照 -->
+    <section class="tight" style="background:var(--surface);">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow">為什麼不一樣</p>
+          <h2>市面上是留言機，<br>我們是即時互動平台</h2>
+          <p class="lead">同樣是一台復古電話，差別在賓客留完之後發生什麼事。</p>
+        </div>
+
+        <div class="compare">
+          <div class="compare-col theirs">
+            <h4>一般復古電話留言機</h4>
+            <ul>
+              <li>錄在機器裡，活動後才上傳或寄還</li>
+              <li>要等好幾天才拿得到檔案</li>
+              <li>現場無法確認錄得成不成功</li>
+              <li>照片輪播要另外找設備</li>
+              <li>單向錄音／錄影，不會回話</li>
+            </ul>
+          </div>
+          <div class="compare-col ours">
+            <h4>斌先生工作室 · 互動電話</h4>
+            <ul>
+              <li>留言<strong>即時上雲</strong>，當天就能看與下載</li>
+              <li>專頁付款後<strong>立即開通</strong>，自己上傳輪播照片</li>
+              <li>現場隨時開專頁確認，不怕漏錄</li>
+              <li>照片、影片、留言集中在同一個專頁</li>
+              <li>可升級 <strong>AI 即時對話</strong>，話筒那頭真的會回你</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:40px;">
+          <strong>為什麼做得到？</strong>因為機器是我們自己改裝的，不是買現成的道具來出租。從話筒接點到上傳流程都自己寫，所以能做到即時上雲、網頁自助操作，也才有辦法往後接 AI 對話與互動遊戲。
+        </div>
+      </div>
+    </section>
+
+    <!-- 怎麼運作 -->
+    <section id="how">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow">How it works</p>
+          <h2>四個步驟，不用技術背景</h2>
+        </div>
+
+        <div class="flow-steps">
+          <div class="flow-item">
+            <span class="num">1</span>
+            <h4>線上下單</h4>
+            <p>選方案、填活動資料，刷卡完成</p>
+          </div>
+          <div class="flow-item">
+            <span class="num">2</span>
+            <h4>專頁立即開通</h4>
+            <p>馬上上傳輪播照片、預覽效果</p>
+          </div>
+          <div class="flow-item">
+            <span class="num">3</span>
+            <h4>活動當天</h4>
+            <p>賓客拿起話筒留言，自動上雲</p>
+          </div>
+          <div class="flow-item">
+            <span class="num">4</span>
+            <h4>隨時觀看下載</h4>
+            <p>專頁上直接看、直接下載</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:48px;">
+          <strong>電話機與專頁是分開進行的：</strong>線上專頁<strong>付款後立即開通</strong>，你當下就能開始佈置內容；<strong>實體電話機由專人另行聯繫</strong>安排取件或寄送，不會自動出貨。下單時可選自取（免費）或郵寄（+NT$400）。
+        </div>
+      </div>
+    </section>
+
+    <!-- 誰適合 -->
+    <section class="tight" style="background:var(--surface);">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow">Use cases</p>
+          <h2>什麼場合適合放一台？</h2>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">
+            <h4>💒 婚禮簽到 · 留言</h4>
+            <p>比簽名本更有溫度。婚禮當天太忙，往往來不及跟每位賓客說上話——讓他們自己留下一段影像祝福，你事後慢慢看。</p>
+          </div>
+          <div class="feature">
+            <h4>🎂 生日 · 家庭聚會</h4>
+            <p>幫爸媽辦壽宴，讓晚輩一個一個留話。這些話寫在卡片上會被收起來，錄成影片會被反覆播放。</p>
+          </div>
+          <div class="feature">
+            <h4>🏢 企業活動 · 尾牙</h4>
+            <p>員工留言、客戶祝賀、週年感言。集中收在一個專頁，活動結束就能拿去剪成回顧影片。</p>
+          </div>
+          <div class="feature">
+            <h4>🎪 展場 · 快閃活動</h4>
+            <p>互動裝置的一種。搭配 AI 版讓話筒真的能對話，是很好的停留與話題製造機。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 方案 -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow">Pricing</p>
+          <h2>租用方案</h2>
+          <p class="lead">單場活動計價，含機器與線上專頁。</p>
+        </div>
+
+        <div class="pricing-plans">
+
+          <div class="pricing-plan recommended">
+            <p class="plan-name">出租 · 基本版</p>
+            <p class="plan-desc">最多人選</p>
+            <p class="plan-price">NT$4,800 <small>含稅</small></p>
+            <p class="plan-unit">單場活動</p>
+            <ul class="plan-features">
+              <li>活動當天互動電話機</li>
+              <li>線上活動專頁（付款後立即開通）</li>
+              <li>祝福錄影不限支數</li>
+              <li>自行上傳輪播照片</li>
+              <li>雲端保留活動後 30 天</li>
+            </ul>
+            <a href="https://guestars.app/rental/buy" class="btn btn-primary">立即租用 →</a>
+          </div>
+
+          <div class="pricing-plan">
+            <p class="plan-name">AI 互動版</p>
+            <p class="plan-desc">話筒那頭真的會回你話</p>
+            <p class="plan-price">NT$11,800 <small>含稅</small></p>
+            <p class="plan-unit">單場活動</p>
+            <ul class="plan-features">
+              <li>基本版全部內容</li>
+              <li>訂製 AI 角色 1 個</li>
+              <li>AI 對話 90 分鐘</li>
+              <li>2 次角色微調</li>
+              <li>雲端保留 60 天</li>
+            </ul>
+            <a href="https://guestars.app/rental/buy" class="btn btn-ghost">立即租用 →</a>
+          </div>
+
+          <div class="pricing-plan">
+            <p class="plan-name">加購 · 保留延長</p>
+            <p class="plan-desc">既有客戶適用</p>
+            <p class="plan-price">NT$500 <small>含稅</small></p>
+            <p class="plan-unit">每 30 天</p>
+            <ul class="plan-features">
+              <li>原雲端保留期再 +30 天</li>
+              <li>需填原訂單編號</li>
+              <li>到期前皆可申請</li>
+              <li>可重複加購</li>
+            </ul>
+            <a href="https://guestars.app/rental/buy" class="btn btn-ghost">前往加購 →</a>
+          </div>
+
+        </div>
+
+        <div class="callout" style="margin-top:40px;">
+          <strong>取件方式下單時選擇：</strong>自取免費（桃園市桃園區介壽路 495 巷 67 號，警衛室代收，時間彈性）；郵寄來回 +NT$400（附回郵包裝，活動後 3 日內寄回）。<br>
+          <strong>長租、多場次或婚顧合作</strong>依檔期報價，不開放線上刷卡，<a href="/#contact" style="color:var(--accent);">來信洽談</a>。
+        </div>
+      </div>
+    </section>
+
+    <!-- 升級 AI -->
+    <section class="tight" style="background:var(--surface);">
+      <div class="container-narrow text-center">
+        <p class="eyebrow">延伸</p>
+        <h2>想讓話筒那頭，真的回你話？</h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">AI 互動版是把我們的虛擬人物即時對話裝進電話裡——賓客拿起話筒，跟一個量身訂做的角色真的聊起來。外型、個性、記憶都能設定。</p>
+        <div class="cta-group" style="justify-content:center;">
+          <a href="/virtualchar" class="btn btn-ghost btn-lg">了解虛擬對話 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 同業改機 -->
+    <section class="tight">
+      <div class="container-narrow">
+        <div class="section-header text-center">
+          <p class="eyebrow">Retrofit Service · 同業合作</p>
+          <h2>你有機殼，我們讓它會說話</h2>
+          <p class="lead" style="margin-left:auto; margin-right:auto;">同業改機代工。老電話機、古董話筒、道具機——改成能互動接聽、錄影存檔，或接上 AI 角色真的能聊。</p>
+        </div>
+
+        <div class="callout" style="margin-top:32px;">
+          <strong>不做線上報價，因為每台機況差很多。</strong>話筒接點、電源、外殼、有沒有被拆過，都會影響能不能改、要改多久。請填詢價表並附幾張照片（正面、底部、話筒接線處最有幫助），我們看過後在 <strong>1–2 個工作天</strong>內回覆可行性與價格。<strong>改不了的會直說</strong>，不會收了錢才告訴你做不到。
+        </div>
+
+        <div style="text-align:center; margin-top:32px;">
+          <a href="https://guestars.app/service/retrofit" class="btn btn-primary btn-lg">送出改機詢價 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="tight" style="background:var(--surface);">
+      <div class="container-narrow">
+        <div class="section-header text-center">
+          <p class="eyebrow">FAQ</p>
+          <h2>常見問題</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>賓客需要教學嗎？</h4>
+            <p>不用。拿起話筒、聽到提示音、講話、掛回去，就這樣。我們會附一張桌卡說明，現場不需要有人顧著。</p>
+          </div>
+          <div class="faq-item">
+            <h4>現場沒有網路怎麼辦？</h4>
+            <p>需要網路才能即時上傳。多數場地的 Wi-Fi 就夠用；若場地網路不穩，可另外加租 WiFi 機（與 drinkcam 共用），下單時備註即可。</p>
+          </div>
+          <div class="faq-item">
+            <h4>是錄影還是只有錄音？</h4>
+            <p>影像加聲音都有。賓客的臉和聲音會一起留下來，比純錄音更有記憶點。</p>
+          </div>
+          <div class="faq-item">
+            <h4>檔案可以保留多久？</h4>
+            <p>基本版活動後 30 天、AI 互動版 60 天。期限內請自行下載保存；需要更久可加購延長，每 30 天 NT$500。</p>
+          </div>
+          <div class="faq-item">
+            <h4>可以先看到效果再決定嗎？</h4>
+            <p>可以。付款後專頁立即開通，你能先上傳照片、預覽整體效果。若對專頁完全不滿意且尚未領取機器，可依服務條款申請退款。</p>
+          </div>
+          <div class="faq-item">
+            <h4>跟 GUESTARS 可以一起用嗎？</h4>
+            <p>可以，而且很搭。GUESTARS 讓賓客變成大螢幕主角，互動電話讓他們留下真心話——一個炒氣氛、一個留紀念。合併租用有優惠，來信洽談。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結尾 CTA -->
+    <section>
+      <div class="container-narrow text-center">
+        <p class="eyebrow">Get started</p>
+        <h2>讓賓客的聲音，留在雲端</h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">付款後專頁立即開通，電話機我們跟你約。</p>
+        <div class="cta-group" style="justify-content:center;">
+          <a href="https://guestars.app/rental/buy" class="btn btn-primary btn-lg">立即租用 →</a>
+          <a href="/#contact" class="btn btn-ghost btn-lg">先問問看</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="brand-name">斌先生工作室 · Studio</p>
+        <p class="tagline">用 AI 做有溫度的現場體驗</p>
+      </div>
+      <div class="footer-products">
+        <p class="footer-heading">產品</p>
+        <a href="/guestars">GUESTARS</a>
+        <a href="/drinkcam">drinkcam</a>
+        <a href="/phone">互動電話</a>
+        <a href="/virtualchar">虛擬對話</a>
+        <a href="/#contact">保持聯繫</a>
+      </div>
+      <div class="footer-legal">
+        <p class="footer-heading">法務與聯絡</p>
+        <a href="/privacy">隱私權政策</a>
+        <a href="/terms">服務條款</a>
+        <address class="contact-info">
+          斌先生創意工作室<br>
+          統編 61426073<br>
+          桃園市桃園區介壽路 495 巷 67 號 14 樓<br>
+          Tel 0909-080-233<br>
+          Email wubskimo0424@gmail.com
+        </address>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 斌先生創意工作室. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
