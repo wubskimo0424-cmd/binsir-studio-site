@@ -74,6 +74,147 @@
       .demo-embed { aspect-ratio: 9/16; }
     }
   </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "虛擬人物即時對話",
+      "description": "用 AI 打造能即時對話的專屬角色。付款後自行在設定頁建立，約 5 分鐘完成，建好即可對話。可做寵物擬人、家人紀念、品牌吉祥物。",
+      "category": "AI 客製服務",
+      "brand": {
+        "@id": "https://guestars.tw/#org"
+      },
+      "url": "https://guestars.tw/virtualchar",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "TWD",
+        "lowPrice": "3800",
+        "highPrice": "5800",
+        "offerCount": 4,
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "送禮 · 紀念版",
+            "price": "3800",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://guestars.app/virtualchar/buy?plan=gift",
+            "description": "1 個角色，AI 對話約 120 分鐘，網址 30 天"
+          },
+          {
+            "@type": "Offer",
+            "name": "活動 · 派對版",
+            "price": "5800",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://guestars.app/virtualchar/buy?plan=event",
+            "description": "1 個角色，AI 對話約 250 分鐘，網址 60 天"
+          },
+          {
+            "@type": "Offer",
+            "name": "對話額度加購包",
+            "price": "1500",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://guestars.app/virtualchar/buy?plan=topup",
+            "description": "補充約 120 分鐘，付款後立即加值"
+          },
+          {
+            "@type": "Offer",
+            "name": "有效期延長 30 天",
+            "price": "500",
+            "priceCurrency": "TWD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://guestars.app/virtualchar/buy?plan=extend",
+            "description": "付款後立即延長"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "可以做已故親人 / 真人的分身嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以做「致敬感」的角色（口氣、話題、故事），但不會做極度逼真的偽造。為了倫理與法律考量，如果角色影射真實在世人物，我們會要求本人同意；如果是已故親人，會做成「精神致敬」而非直接複製面貌。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "什麼樣的角色會被拒接？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "未成年人、真實政治人物、未經授權的知名 IP、色情/暴力/歧視內容、有明顯法律風險的擬真對象。其他多半 OK，有疑慮歡迎先來信詢問。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "對話會很自然嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "絕大多數時候「像個角色」是可以的。但 AI 有時仍會冒出突兀的話，或聊到某些話題會轉硬。我們建議把它當「彩蛋、驚喜、玩」看待，別當成真人取代。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "網址誰能打開？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "網址你想給誰就給誰。有效期內不限用戶數，但同時只能 1 人通話（進階版可談多人同時）。網址想關閉隨時通知我們，可提前結束。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "對話會被錄下來嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不會。我們不會保存對話錄音或影片，Runway API 也不會回傳完整對話內容。系統只記錄「使用時長」用於計算對話成本。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "120 分鐘、250 分鐘實際能聊多久？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "指的是「純對話時間」，不包含等待與思考。頁面內會即時顯示剩餘額度，快用完時會提醒，可隨時加購。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以退費嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "付款後 24 小時內、且尚未開始建置者，可申請全額退款。開始建置之後恕不退費（人工成本已投入）。若最終角色不滿意，會依方案內的微調機會協助調整。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://guestars.tw"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "虛擬人物即時對話",
+          "item": "https://guestars.tw/virtualchar"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -472,8 +613,8 @@
             <p>不會。我們不會保存對話錄音或影片，Runway API 也不會回傳完整對話內容。系統只記錄「使用時長」用於計算對話成本。</p>
           </div>
           <div class="faq-item">
-            <h4>US$25/US$50/US$100 到底能聊多久？</h4>
-            <p>估算約 30 分鐘 / 1-2 小時 / 4 小時「純對話時間」（不包含等待、思考）。實際會依 AI 回覆長短略有差異。頁面內會顯示剩餘額度。</p>
+            <h4>120 分鐘、250 分鐘實際能聊多久？</h4>
+            <p>指的是「純對話時間」，不包含等待與思考。頁面內會即時顯示剩餘額度，快用完時會提醒，可隨時加購。</p>
           </div>
           <div class="faq-item">
             <h4>可以退費嗎？</h4>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://guestars.tw/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://guestars.tw/guestars</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://guestars.tw/drinkcam</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://guestars.tw/phone</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://guestars.tw/virtualchar</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://guestars.tw/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://guestars.tw/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+</urlset>
