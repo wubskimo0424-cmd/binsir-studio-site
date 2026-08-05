@@ -7,11 +7,44 @@
   <meta name="description" content="婚禮互動電話出租。賓客拿起話筒留下祝福，影片即時上傳雲端，活動當天就能在專頁觀看與下載。可升級 AI 即時對話。復古電話留言機的進化版。">
   <meta property="og:title" content="互動電話 · 賓客留言即時上雲">
   <meta property="og:description" content="別人活動後才給檔案，我們當天就看得到。">
+  <meta property="og:image" content="https://guestars.tw/images/phone-retro@2x.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Hero 圖文並排 */
+    .hero-with-media {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-media {
+      margin: 0;
+      max-width: 420px;
+      justify-self: center;
+    }
+    .hero-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-strong);
+    }
+    .hero-media figcaption {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .hero-with-media { grid-template-columns: 1fr; gap: 40px; }
+      .hero-media { max-width: 340px; }
+    }
+
     /* 對照表：我們 vs 一般留言機 */
     .compare {
       display: grid;
@@ -148,7 +181,10 @@
             "url": "https://guestars.app/rental/buy?plan=extend"
           }
         ]
-      }
+      },
+      "image": [
+        "https://guestars.tw/images/phone-retro@2x.jpg"
+      ]
     },
     {
       "@type": "FAQPage",
@@ -251,12 +287,32 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">☎️ Interactive Phone · 互動電話</p>
-        <h1>拿起話筒說句話，<br>你當天就看得到。</h1>
-        <p class="lead">賓客拿起復古話筒，留下一段祝福，掛回去——影片<strong>即時上傳雲端</strong>，你在專頁上馬上就能看、能下載。不用等活動結束，不用等寄還機器。</p>
-        <div class="cta-group">
-          <a href="https://guestars.app/rental/buy?plan=basic" class="btn btn-primary btn-lg">立即租用</a>
-          <a href="#how" class="btn btn-ghost btn-lg">怎麼運作</a>
+        <div class="hero-with-media">
+          <div>
+            <p class="eyebrow">☎️ Interactive Phone · 互動電話</p>
+            <h1>拿起話筒說句話，<br>你當天就看得到。</h1>
+            <p class="lead">賓客拿起復古話筒，留下一段祝福，掛回去——影片<strong>即時上傳雲端</strong>，你在專頁上馬上就能看、能下載。不用等活動結束，不用等寄還機器。</p>
+            <div class="cta-group">
+              <a href="https://guestars.app/rental/buy?plan=basic" class="btn btn-primary btn-lg">立即租用</a>
+              <a href="#how" class="btn btn-ghost btn-lg">怎麼運作</a>
+            </div>
+          </div>
+          <figure class="hero-media">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="/images/phone-retro.webp 560w, /images/phone-retro@2x.webp 701w"
+                sizes="(max-width: 900px) 100vw, 420px">
+              <img
+                src="/images/phone-retro.jpg"
+                srcset="/images/phone-retro.jpg 560w, /images/phone-retro@2x.jpg 701w"
+                sizes="(max-width: 900px) 100vw, 420px"
+                width="560" height="827"
+                alt="婚禮現場的互動電話：白色復古轉盤式電話機，機身中央嵌有螢幕，話筒可拿起錄下祝福影片，旁邊是婚禮迎賓牌與花藝布置"
+                loading="eager" fetchpriority="high" decoding="async">
+            </picture>
+            <figcaption>實機照。機身中央的螢幕是我們自己改裝加上的。</figcaption>
+          </figure>
         </div>
       </div>
     </section>
