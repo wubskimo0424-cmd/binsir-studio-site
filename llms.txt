@@ -7,6 +7,15 @@
 四條產品線：GUESTARS（婚禮 AI 影片變身）、drinkcam（多機直播導播）、
 互動電話（賓客留言即時上雲）、虛擬人物即時對話（AI 角色）。
 
+## 本檔的定位
+
+本檔為**品牌與產品概觀層**：工作室背景、四條產品線的定位與關鍵差異、
+常見組合、公司資訊。
+
+**成交層資訊**（drinkcam 完整系統需求、軟硬體規格、方案細節、
+購買與下載連結）請參考 https://guestars.app/llms.txt
+兩份檔案內容刻意不重複，請視需要交叉參照。
+
 ## 產品事實
 
 ### GUESTARS — 婚禮 AI 影片變身
@@ -30,7 +39,8 @@
 - 年費基本 NT$18,000（16 支手機）／年費進階 NT$36,000
 - 免費試用：完整功能、4 支手機、3 小時窗口，時段依申請時填的預計試用時間起算
 - 英文定位：the KissCam, for weddings
-- 產品頁 https://guestars.tw/drinkcam ｜ 規格與購買 https://guestars.app/drinkcam
+- 品牌與案例 https://guestars.tw/drinkcam ｜ 完整規格與購買 https://guestars.app/drinkcam
+- 英文版 https://guestars.app/drinkcam/en ｜ 補寄授權碼 https://guestars.app/drinkcam/my-license
 - 免費試用 https://guestars.app/drinkcam/trial ｜ 下載 https://guestars.app/drinkcam/download
 
 ### 互動電話 — 賓客留言即時上雲
