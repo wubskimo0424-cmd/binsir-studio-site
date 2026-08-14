@@ -49,6 +49,28 @@
       overflow: hidden;
     }
     .theme-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .theme-card-img { position: relative; cursor: pointer; }
+    .theme-card-img::after {
+      content: "▶";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(28, 23, 37, 0.55);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      padding-left: 4px;
+      pointer-events: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .theme-card:hover .theme-card-img::after {
+      background: var(--accent);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .theme-card-img.playing::after { display: none; }
+    .theme-card-img video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .theme-card-body { padding: 16px 20px; }
     .theme-card h4 { font-size: 1.05rem; margin-bottom: 4px; }
     .theme-card p.theme-tag { font-size: 0.8rem; color: var(--text-secondary); margin: 0; }
@@ -274,7 +296,7 @@
         <div class="section-header">
           <p class="eyebrow">42+ 種主題</p>
           <h2>42+ 種主題，任你抽</h2>
-          <p class="lead">AI 依賓客性別智慧推薦，每場婚禮都有新鮮感。加權隨機、不重複出現。以下是幾個精選示範：</p>
+          <p class="lead">AI 依賓客性別智慧推薦，每場婚禮都有新鮮感。加權隨機、不重複出現。以下是幾個精選示範，<strong>點卡片直接看影片</strong>：</p>
         </div>
 
         <div class="theme-grid">
@@ -556,6 +578,40 @@
       <p>© 2026 斌先生創意工作室. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // 主題卡點擊播放：截圖換成對應的示範影片（同一時間只播一張）
+    (function () {
+      function restore(box) {
+        var v = box.querySelector('video');
+        if (v) { v.pause(); v.remove(); }
+        var img = box.querySelector('img');
+        if (img) img.style.display = '';
+        box.classList.remove('playing');
+      }
+      document.querySelectorAll('.theme-card-img').forEach(function (box) {
+        var img = box.querySelector('img');
+        if (!img) return;
+        box.addEventListener('click', function () {
+          if (box.classList.contains('playing')) return;
+          document.querySelectorAll('.theme-card-img.playing').forEach(restore);
+          var mp4 = img.src
+            .replace(/upload\/[^/]+\//, 'upload/')
+            .replace(/\.jpg(\?.*)?$/, '.mp4');
+          var v = document.createElement('video');
+          v.src = mp4;
+          v.autoplay = true;
+          v.controls = true;
+          v.playsInline = true;
+          v.setAttribute('playsinline', '');
+          img.style.display = 'none';
+          box.appendChild(v);
+          box.classList.add('playing');
+          v.addEventListener('ended', function () { restore(box); });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
