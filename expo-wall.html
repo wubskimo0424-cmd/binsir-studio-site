@@ -30,7 +30,7 @@
 <body>
   <div id="stage"></div>
   <div id="tag" class="hidden"></div>
-  <div id="start"><div class="big">▶ 點一下開始輪播</div><div class="small">將自動全螢幕・自動混播 變身影片×現場合照×電話留言</div></div>
+  <div id="start"><div class="big">▶ 點一下開始輪播</div><div class="small">將自動全螢幕・自動混播 變身影片×現場合照</div></div>
 
 <script>
 (function () {
@@ -70,15 +70,12 @@
       });
     } catch (e) {}
 
-    // 2) 電話系統：現場合照 / 留言影片 / 輪播照片
+    // 2) 電話系統：只取現場合照（留言影片與輪播相簿皆不播）
     try {
       var d = await fetch(API).then(function(r){return r.json();});
       (d.snapshots  || []).forEach(function (s) {
         var u = s.aiUrl || s.url;
         if (u) addItem({ type:'photo', url:u, label:'📸 現場合照' }, !isFirst);
-      });
-      (d.recordings || []).forEach(function (r) {
-        if (r.url) addItem({ type:'video', url:r.url, label:'☎️ 電話留言' }, !isFirst);
       });
     } catch (e) {}
   }
