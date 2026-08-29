@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>展場合併輪播牆</title>
+<meta name="robots" content="noindex">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; background:#000; overflow:hidden; }
+  #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  #stage img, #stage video { max-width:100%; max-height:100%; object-fit:contain; }
+  #tag {
+    position:fixed; right:28px; bottom:24px;
+    font-family:"Noto Sans TC",-apple-system,sans-serif;
+    font-size:20px; color:rgba(255,255,255,.9);
+    background:rgba(0,0,0,.45); padding:8px 18px; border-radius:999px;
+    letter-spacing:.05em; backdrop-filter:blur(6px);
+  }
+  #start {
+    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px; color:#fff; cursor:pointer;
+    font-family:"Noto Sans TC",sans-serif; background:#000; z-index:10;
+  }
+  #start .big { font-size:34px; letter-spacing:.1em; }
+  #start .small { font-size:15px; opacity:.55; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="tag" class="hidden"></div>
+  <div id="start"><div class="big">▶ 點一下開始輪播</div><div class="small">將自動全螢幕・自動混播 變身影片×現場合照×電話留言</div></div>
+
+<script>
+(function () {
+  var qs = new URLSearchParams(location.search);
+  var ROOM  = qs.get('room') || 'Event_20260830_007';
+  var SLUG  = qs.get('e')    || 'iiEyObcI';
+  var PHOTO_SECONDS = parseInt(qs.get('photo') || '5', 10);
+  var MUTED = qs.get('muted') === '1';
+
+  var FB   = 'https://mryes-wedding-game-default-rtdb.asia-southeast1.firebasedatabase.app';
+  var API  = 'https://mr-yes-phone.vercel.app/api/event-data?e=' + SLUG;
+
+  var stage = document.getElementById('stage');
+  var tag   = document.getElementById('tag');
+
+  var queue = [];          // 待播 {type:'video'|'photo', url, label}
+  var seen  = new Set();   // 已入列過的 url
+  var pools = { video:[], photo:[] };  // 全量清單（重建整輪用）
+
+  function addItem(item, front) {
+    if (seen.has(item.url)) return false;
+    seen.add(item.url);
+    pools[item.type].push(item);
+    if (front) queue.unshift(item); // 新素材插隊，盡快上牆
+    return true;
+  }
+
+  async function fetchAll(isFirst) {
+    // 1) 變身系統影片（示範 + 現場生成，含 drinkcam 介紹）
+    try {
+      var players = await fetch(FB + '/Events/' + ROOM + '/Players.json').then(function(r){return r.json();}) || {};
+      Object.keys(players).sort().forEach(function (id) {
+        var p = players[id];
+        if (p && p.video_url && !p.video_failed) {
+          addItem({ type:'video', url:p.video_url, label:'✨ AI 變身' + (id==='demo_07' ? '｜drinkcam 介紹' : '') }, !isFirst);
+        }
+      });
+    } catch (e) {}
+
+    // 2) 電話系統：現場合照 / 留言影片 / 輪播照片
+    try {
+      var d = await fetch(API).then(function(r){return r.json();});
+      (d.snapshots  || []).forEach(function (s) {
+        var u = s.aiUrl || s.url;
+        if (u) addItem({ type:'photo', url:u, label:'📸 現場合照' }, !isFirst);
+      });
+      (d.recordings || []).forEach(function (r) {
+        if (r.url) addItem({ type:'video', url:r.url, label:'☎️ 電話留言' }, !isFirst);
+      });
+      (d.slideshow  || []).forEach(function (s) {
+        if (s.url) addItem({ type:'photo', url:s.url, label:'📷 活動相簿' }, !isFirst);
+      });
+    } catch (e) {}
+  }
+
+  // 重建一整輪：影片、照片交錯（影：照 ≈ 1:1，照片不夠就連播影片）
+  function rebuildQueue() {
+    var v = pools.video.slice(), p = pools.photo.slice(), out = [];
+    while (v.length || p.length) {
+      if (v.length) out.push(v.shift());
+      if (p.length) out.push(p.shift());
+    }
+    return out;
+  }
+
+  function show(item) {
+    stage.innerHTML = '';
+    tag.textContent = item.label;
+    tag.classList.remove('hidden');
+
+    if (item.type === 'photo') {
+      var img = new Image();
+      img.onload  = function () { stage.appendChild(img); setTimeout(next, PHOTO_SECONDS * 1000); };
+      img.onerror = function () { next(); };
+      img.src = item.url;
+    } else {
+      var v = document.createElement('video');
+      v.src = item.url;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.muted = MUTED;
+      v.onended = next;
+      v.onerror = function () { next(); };
+      // 保險絲：影片卡住 90 秒就跳下一個
+      var fuse = setTimeout(next, 90000);
+      v.onended = function () { clearTimeout(fuse); next(); };
+      stage.appendChild(v);
+      v.play().catch(function () { v.muted = true; v.play().catch(next); });
+    }
+  }
+
+  var advancing = false;
+  function next() {
+    if (advancing) return;       // 防止 onended/onerror/保險絲重複觸發
+    advancing = true;
+    setTimeout(function () { advancing = false; }, 300);
+
+    if (queue.length === 0) queue = rebuildQueue();
+    if (queue.length === 0) { setTimeout(next, 3000); return; }
+    show(queue.shift());
+  }
+
+  document.getElementById('start').addEventListener('click', function () {
+    this.classList.add('hidden');
+    if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
+    fetchAll(true).then(function () { queue = rebuildQueue(); next(); });
+    // 每 30 秒背景撈新素材，新東西插隊優先上牆
+    setInterval(function () { fetchAll(false); }, 30000);
+  });
+})();
+</script>
+</body>
+</html>
