@@ -613,5 +613,26 @@
     })();
   </script>
 
+  <!-- 浮動 LINE 按鈕 -->
+  <style>
+    .line-float {
+      position: fixed; right: 20px; bottom: 20px; z-index: 300;
+      width: 56px; height: 56px; background: #06C755; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.22);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .line-float:hover { transform: scale(1.1); box-shadow: 0 6px 22px rgba(0,0,0,.3); }
+    .line-float svg { width: 30px; height: 30px; fill: #fff; }
+    @media (max-width: 600px) {
+      .line-float { right: 14px; bottom: 14px; width: 50px; height: 50px; }
+      .line-float svg { width: 27px; height: 27px; }
+    }
+  </style>
+  <a href="https://line.me/R/ti/p/@580jfvwn" target="_blank" rel="noopener"
+     class="line-float" aria-label="加入 LINE 好友，直接聊聊">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.64 2 10.1c0 3.99 3.55 7.33 8.34 7.97.32.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.88.55 1.09-.46 5.87-3.46 8.01-5.92C21.49 13.35 22 11.79 22 10.1 22 5.64 17.52 2 12 2z"/></svg>
+  </a>
+
 </body>
 </html>
