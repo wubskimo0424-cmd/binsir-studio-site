@@ -133,13 +133,17 @@
     show(queue.shift());
   }
 
-  document.getElementById('start').addEventListener('click', function () {
-    this.classList.add('hidden');
-    if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){});
+  function boot(fullscreen) {
+    document.getElementById('start').classList.add('hidden');
+    if (fullscreen && document.documentElement.requestFullscreen)
+      document.documentElement.requestFullscreen().catch(function(){});
     fetchAll(true).then(function () { queue = rebuildQueue(); next(); });
     // 每 30 秒背景撈新素材，新東西插隊優先上牆
     setInterval(function () { fetchAll(false); }, 30000);
-  });
+  }
+  document.getElementById('start').addEventListener('click', function () { boot(true); });
+  // ?auto=1：免點擊自動開始（給導播機網頁來源用；瀏覽器政策要求自動播放必須靜音）
+  if (qs.get('auto') === '1') { MUTED = true; boot(false); }
 })();
 </script>
 </body>
