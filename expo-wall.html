@@ -80,9 +80,6 @@
       (d.recordings || []).forEach(function (r) {
         if (r.url) addItem({ type:'video', url:r.url, label:'☎️ 電話留言' }, !isFirst);
       });
-      (d.slideshow  || []).forEach(function (s) {
-        if (s.url) addItem({ type:'photo', url:s.url, label:'📷 活動相簿' }, !isFirst);
-      });
     } catch (e) {}
   }
 
