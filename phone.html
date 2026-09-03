@@ -424,6 +424,73 @@
       </div>
     </section>
 
+    <!-- 檔期查詢 -->
+    <section id="availability">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="eyebrow">Availability</p>
+          <h2>檔期查詢</h2>
+          <p class="section-lead">標示「已滿」的日子無法出租，其他日期歡迎直接下訂。</p>
+        </div>
+        <style>
+          .cal-wrap { max-width:420px; margin:32px auto 0; background:var(--surface,#fff); border:1px solid var(--border,#E2D5C5); border-radius:14px; padding:20px; }
+          .cal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+          .cal-head b { font-size:1.05rem; }
+          .cal-head button { border:none; background:#EFE7DD; border-radius:8px; width:34px; height:34px; font-size:16px; cursor:pointer; }
+          .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; text-align:center; }
+          .cal-grid .dow { font-size:.75rem; color:var(--text-muted,#8B7A6C); padding:4px 0; }
+          .cal-grid .day { padding:9px 0; border-radius:8px; font-size:.9rem; }
+          .cal-grid .day.past { color:#C9BBAE; }
+          .cal-grid .day.full { background:#FBE9E7; color:#C53030; font-weight:700; position:relative; }
+          .cal-grid .day.full::after { content:"已滿"; display:block; font-size:.55rem; font-weight:400; }
+          .cal-note { text-align:center; font-size:.78rem; color:var(--text-muted,#8B7A6C); margin-top:12px; }
+        </style>
+        <div class="cal-wrap">
+          <div class="cal-head">
+            <button id="calPrev" aria-label="上個月">‹</button>
+            <b id="calTitle"></b>
+            <button id="calNext" aria-label="下個月">›</button>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+          <p class="cal-note" id="calNote">載入檔期中…</p>
+        </div>
+        <script>
+        (function(){
+          var blocked = {};
+          var cur = new Date(); cur.setDate(1);
+          var todayStr = new Date().toISOString().slice(0,10);
+          function render(){
+            var y = cur.getFullYear(), m = cur.getMonth();
+            document.getElementById('calTitle').textContent = y + ' 年 ' + (m+1) + ' 月';
+            var g = document.getElementById('calGrid');
+            g.innerHTML = ['日','一','二','三','四','五','六'].map(function(d){return '<span class="dow">'+d+'</span>';}).join('');
+            var first = new Date(y, m, 1).getDay();
+            var days = new Date(y, m+1, 0).getDate();
+            for (var i=0;i<first;i++) g.innerHTML += '<span></span>';
+            for (var d=1;d<=days;d++){
+              var ds = y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+              var cls = 'day' + (blocked[ds]?' full':'') + (ds<todayStr?' past':'');
+              g.innerHTML += '<span class="'+cls+'">'+d+'</span>';
+            }
+          }
+          document.getElementById('calPrev').onclick = function(){ cur.setMonth(cur.getMonth()-1); render(); };
+          document.getElementById('calNext').onclick = function(){ cur.setMonth(cur.getMonth()+1); render(); };
+          render();
+          fetch('https://mryes-wedding-game.vercel.app/api/phone-availability')
+            .then(function(r){return r.json();})
+            .then(function(d){
+              (d.blockedDays||[]).forEach(function(x){ blocked[x]=true; });
+              document.getElementById('calNote').textContent = (d.blockedDays&&d.blockedDays.length)
+                ? '紅色日期含取機與歸還日，該期間機器已被預約。'
+                : '目前查詢範圍內所有日期都可出租。';
+              render();
+            })
+            .catch(function(){ document.getElementById('calNote').textContent = '檔期即時查詢暫時無法使用，下訂時仍會為你確認。'; });
+        })();
+        </script>
+      </div>
+    </section>
+
     <!-- 方案 -->
     <section id="pricing">
       <div class="container">
