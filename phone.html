@@ -692,5 +692,106 @@
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.64 2 10.1c0 3.99 3.55 7.33 8.34 7.97.32.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.88.55 1.09-.46 5.87-3.46 8.01-5.92C21.49 13.35 22 11.79 22 10.1 22 5.64 17.52 2 12 2z"/></svg>
   </a>
 
+<!-- 預約日期彈窗：點「立即租用」先選日期，帶著日期前往付款 -->
+<style>
+  #bookModal { position:fixed; inset:0; background:rgba(44,31,23,.55); display:flex; align-items:center; justify-content:center; z-index:400; padding:16px; }
+  #bookModal.hidden { display:none; }
+  .bm-card { background:#fff; border-radius:16px; padding:22px; width:100%; max-width:400px; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+  .bm-card h3 { font-size:1.1rem; margin-bottom:4px; }
+  .bm-card .bm-sub { font-size:.82rem; color:#8B7A6C; margin-bottom:14px; }
+  .bm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .bm-head button { border:none; background:#EFE7DD; border-radius:8px; width:32px; height:32px; font-size:15px; cursor:pointer; }
+  .bm-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; text-align:center; }
+  .bm-grid .dw { font-size:.72rem; color:#8B7A6C; padding:3px 0; }
+  .bm-grid .d { padding:8px 0; border-radius:8px; font-size:.88rem; cursor:pointer; }
+  .bm-grid .d:hover { background:#EFE7DD; }
+  .bm-grid .d.off { color:#C9BBAE; cursor:not-allowed; }
+  .bm-grid .d.off:hover { background:none; }
+  .bm-grid .d.full { background:#FBE9E7; color:#C53030; cursor:not-allowed; font-weight:700; }
+  .bm-grid .d.sel { background:#C05621; color:#fff; font-weight:700; }
+  .bm-foot { display:flex; gap:10px; margin-top:16px; }
+  .bm-foot button { flex:1; padding:12px; border:none; border-radius:10px; font-size:.95rem; cursor:pointer; }
+  .bm-cancel { background:#EFE7DD; }
+  .bm-go { background:#C05621; color:#fff; font-weight:700; }
+  .bm-go:disabled { background:#C9BBAE; cursor:not-allowed; }
+</style>
+<div id="bookModal" class="hidden" role="dialog" aria-modal="true">
+  <div class="bm-card">
+    <h3>選擇活動日期</h3>
+    <p class="bm-sub">紅色為已滿檔期。選好日期後前往付款，日期會自動帶入。</p>
+    <div class="bm-head">
+      <button id="bmPrev">‹</button><b id="bmTitle"></b><button id="bmNext">›</button>
+    </div>
+    <div class="bm-grid" id="bmGrid"></div>
+    <div class="bm-foot">
+      <button class="bm-cancel" id="bmCancel">取消</button>
+      <button class="bm-go" id="bmGo" disabled>前往付款</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var API = 'https://mryes-wedding-game.vercel.app/api/phone-availability';
+  var MIN_LEAD_DAYS = 2;   // 最快可選:後天(留出貨/交接準備時間)
+  var blocked = {}, loaded = false, targetHref = null, sel = null;
+  var cur = new Date(); cur.setDate(1);
+  var modal = document.getElementById('bookModal');
+
+  function dstr(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
+  function minDate(){ var t=new Date(); t.setDate(t.getDate()+MIN_LEAD_DAYS); return t.toISOString().slice(0,10); }
+
+  function render(){
+    var y = cur.getFullYear(), m = cur.getMonth();
+    document.getElementById('bmTitle').textContent = y+' 年 '+(m+1)+' 月';
+    var g = document.getElementById('bmGrid');
+    g.innerHTML = ['日','一','二','三','四','五','六'].map(function(x){return '<span class="dw">'+x+'</span>';}).join('');
+    var first = new Date(y,m,1).getDay(), days = new Date(y,m+1,0).getDate(), min = minDate();
+    for (var i=0;i<first;i++) g.innerHTML += '<span></span>';
+    for (var d=1;d<=days;d++){
+      var ds = dstr(y,m,d);
+      var cls = 'd';
+      if (ds < min) cls += ' off';
+      else if (blocked[ds]) cls += ' full';
+      if (ds === sel) cls += ' sel';
+      g.innerHTML += '<span class="'+cls+'" data-d="'+ds+'">'+d+'</span>';
+    }
+    Array.prototype.forEach.call(g.querySelectorAll('.d'), function(el){
+      if (el.classList.contains('off') || el.classList.contains('full')) return;
+      el.onclick = function(){
+        sel = el.dataset.d;
+        document.getElementById('bmGo').disabled = false;
+        render();
+      };
+    });
+  }
+
+  function open(href){
+    targetHref = href; sel = null;
+    document.getElementById('bmGo').disabled = true;
+    modal.classList.remove('hidden');
+    render();
+    if (!loaded) {
+      fetch(API).then(function(r){return r.json();}).then(function(d){
+        (d.blockedDays||[]).forEach(function(x){ blocked[x]=true; });
+        loaded = true; render();
+      }).catch(function(){ loaded = true; }); // 檔期查詢失敗不擋客人，付款端會再驗
+    }
+  }
+
+  document.getElementById('bmPrev').onclick = function(){ cur.setMonth(cur.getMonth()-1); render(); };
+  document.getElementById('bmNext').onclick = function(){ cur.setMonth(cur.getMonth()+1); render(); };
+  document.getElementById('bmCancel').onclick = function(){ modal.classList.add('hidden'); };
+  modal.addEventListener('click', function(e){ if (e.target === modal) modal.classList.add('hidden'); });
+  document.getElementById('bmGo').onclick = function(){
+    if (sel && targetHref) location.href = targetHref + '&date=' + sel;
+  };
+
+  // 攔截需要選日期的方案(基本版/AI版；升級與延長不用)
+  Array.prototype.forEach.call(document.querySelectorAll('a[href*="rental/buy"]'), function(a){
+    if (!/plan=(basic|ai)(&|$)/.test(a.href)) return;
+    a.addEventListener('click', function(e){ e.preventDefault(); open(a.href); });
+  });
+})();
+</script>
 </body>
 </html>
