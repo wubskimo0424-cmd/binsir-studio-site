@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>作品集｜阿斌 Pin Shun Wu — 婚禮影像 × 產品開發</title>
+  <meta name="description" content="阿斌（Pin Shun Wu）的產品作品集：GUESTARS 婚禮 AI 影片變身系統、DrinkCam 多手機現場直播、集卡冊 iOS App、抓娃娃 3D 遊戲。">
+  <meta property="og:title" content="作品集｜阿斌 Pin Shun Wu">
+  <meta property="og:description" content="婚禮影像 × 產品開發：AI 影片變身、多機直播、iOS App、3D 遊戲">
+  <meta property="og:image" content="https://guestars.tw/videos/works/drinkcam-demo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#F7F3ED; --card:#FFFFFF; --ink:#2C1F17; --sub:#6D5B4E; --muted:#9A8878;
+      --accent:#C05621; --accent-soft:#F6E3D6; --line:#E8DDD1; --radius:18px;
+      --serif:"Noto Serif TC",serif; --sans:"Noto Sans TC",-apple-system,sans-serif;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:var(--sans); background:var(--bg); color:var(--ink); line-height:1.75; -webkit-font-smoothing:antialiased; }
+    a { color:var(--accent); text-decoration:none; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 22px; }
+
+    /* ── 開頭 ── */
+    header { padding:72px 0 40px; }
+    .eyebrow { font-size:13px; letter-spacing:.18em; color:var(--accent); font-weight:700; }
+    h1 { font-family:var(--serif); font-size:clamp(30px,5vw,46px); line-height:1.3; margin:10px 0 14px; }
+    h1 small { display:block; font-size:.48em; color:var(--sub); font-family:var(--sans); font-weight:500; margin-top:6px; }
+    .intro { font-size:17px; color:var(--sub); max-width:720px; }
+    .contact { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .chip { display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:14px; color:var(--ink); }
+    .chip.line { background:#06C755; color:#fff; border-color:#06C755; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:34px; }
+    .stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+    .stat b { display:block; font-family:var(--serif); font-size:24px; color:var(--accent); }
+    .stat span { font-size:13px; color:var(--sub); }
+
+    /* ── 作品 ── */
+    .work { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:30px; margin:26px 0; box-shadow:0 6px 24px rgba(44,31,23,.05); }
+    .work-head { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:6px; }
+    .work-head img.icon { width:52px; height:52px; border-radius:12px; }
+    .work h2 { font-family:var(--serif); font-size:26px; }
+    .tag { font-size:12px; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent); font-weight:700; }
+    .tag.live { background:#E3F4E6; color:#2F855A; }
+    .tag.dev { background:#EEF0F7; color:#4A5A8C; }
+    .lead { font-size:16px; color:var(--sub); margin:6px 0 18px; }
+    .grid { display:grid; grid-template-columns:1.1fr 1fr; gap:26px; align-items:start; }
+    .grid.media-right { grid-template-columns:1fr 1.1fr; }
+    video, .shot { width:100%; border-radius:14px; background:#111; display:block; }
+    .vertical { max-width:300px; margin:0 auto; }
+    ul.points { list-style:none; }
+    ul.points li { position:relative; padding:5px 0 5px 20px; font-size:15px; }
+    ul.points li::before { content:""; position:absolute; left:2px; top:15px; width:7px; height:7px; border-radius:50%; background:var(--accent); }
+    h3 { font-size:14px; letter-spacing:.08em; color:var(--muted); margin:18px 0 6px; }
+    .stack { display:flex; flex-wrap:wrap; gap:6px; }
+    .stack span { font-size:12px; padding:4px 10px; border-radius:8px; background:#F3EEE8; color:var(--sub); }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .btn { display:inline-block; padding:10px 18px; border-radius:10px; font-size:14px; font-weight:700; background:var(--accent); color:#fff; }
+    .btn.ghost { background:transparent; color:var(--accent); border:1.5px solid var(--accent); }
+
+    /* GUESTARS 主題示範 */
+    .themes { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:12px; }
+    .themes figure { position:relative; cursor:pointer; }
+    .themes img, .themes video { width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:10px; display:block; background:#111; }
+    .themes figcaption { font-size:12px; color:var(--sub); text-align:center; margin-top:4px; }
+    .themes .play { position:absolute; top:6px; right:6px; font-size:11px; background:rgba(0,0,0,.55); color:#fff; padding:2px 8px; border-radius:99px; }
+
+    /* App 截圖橫向捲動 */
+    .shots { display:flex; gap:12px; overflow-x:auto; padding-bottom:6px; scroll-snap-type:x mandatory; }
+    .shots img { height:420px; border-radius:16px; border:1px solid var(--line); scroll-snap-align:start; flex:none; }
+
+    footer { text-align:center; padding:50px 0 70px; color:var(--muted); font-size:13px; }
+
+    @media (max-width:820px) {
+      .grid, .grid.media-right { grid-template-columns:1fr; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .themes { grid-template-columns:repeat(2,1fr); }
+      .work { padding:22px; }
+      .shots img { height:360px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="eyebrow">PORTFOLIO</p>
+  <h1>阿斌 Pin Shun Wu<small>婚禮影像工作者 × 產品開發者</small></h1>
+  <p class="intro">
+    十多年婚禮錄影、近三百場現場經驗。我把在現場看到的需求做成產品——從企劃、介面設計、前後端開發、App 上架，到金流串接與上線營運，都親手完成。
+  </p>
+  <div class="contact">
+    <a class="chip" href="mailto:wubskimo0424@gmail.com">✉️ wubskimo0424@gmail.com</a>
+    <a class="chip line" href="https://line.me/R/ti/p/@580jfvwn" target="_blank" rel="noopener">LINE @580jfvwn</a>
+    <a class="chip" href="https://guestars.tw" target="_blank" rel="noopener">🌐 guestars.tw</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>2 款</b><span>iOS App 已上架 App Store</span></div>
+    <div class="stat"><b>4 項</b><span>產品線上營運中</span></div>
+    <div class="stat"><b>自建</b><span>線上金流與付款後自動開通</span></div>
+    <div class="stat"><b>近 300 場</b><span>婚禮現場實戰經驗</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ── 1. GUESTARS ── -->
+  <section class="work" id="guestars">
+    <div class="work-head">
+      <h2>GUESTARS 婚禮 AI 影片變身</h2>
+      <span class="tag live">營運中</span>
+    </div>
+    <p class="lead">賓客在婚宴現場掃碼拍一張照片，AI 即時把他變成電影主角，主持人用手機控制何時播上大螢幕，全場一起尖叫。</p>
+    <div class="grid">
+      <div>
+        <video class="vertical" controls playsinline muted preload="metadata"
+          poster="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_600,q_auto/v1775562006/%E7%8F%BE%E5%A0%B4%E6%B0%A3%E6%B0%9B_xj6jec.jpg"
+          src="https://res.cloudinary.com/dmofz59ft/video/upload/v1775562006/%E7%8F%BE%E5%A0%B4%E6%B0%A3%E6%B0%9B_xj6jec.mp4"></video>
+      </div>
+      <div>
+        <ul class="points">
+          <li>賓客掃 QR 拍照 → AI 圖生影片 → 排隊生成 → 主持人控台一鍵播放上大螢幕</li>
+          <li>40 多種主題，依賓客性別智慧推薦、加權隨機不重複；支援新人「同框」與抽獎模式</li>
+          <li>AI 自動檢查成品品質，不合格自動換主題重新生成</li>
+          <li>官網線上刷卡，付款成功自動開通活動、寄出四個管理網址，並推播 LINE 通知</li>
+          <li>活動結束自動關房、30 天後自動清除照片，閒置時系統成本趨近於零</li>
+        </ul>
+        <h3>技術</h3>
+        <div class="stack">
+          <span>Kling / Seedance 影片生成 API</span><span>Gemini 視覺判斷</span><span>Firebase 即時資料庫</span>
+          <span>Vercel Serverless + 排程</span><span>Cloudinary</span><span>綠界金流</span><span>LINE Messaging API</span>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://guestars.tw/guestars" target="_blank" rel="noopener">產品頁</a>
+        </div>
+      </div>
+    </div>
+    <h3>主題示範（點擊播放）</h3>
+    <div class="themes" id="themes">
+      <figure data-v="https://res.cloudinary.com/dmofz59ft/video/upload/v1775364870/%E4%BB%99%E5%A5%B3%E8%AE%8A%E8%BA%AB_bb0rji.mp4">
+        <img loading="lazy" src="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_400,q_auto/v1775364870/%E4%BB%99%E5%A5%B3%E8%AE%8A%E8%BA%AB_bb0rji.jpg" alt="仙女變身"><span class="play">▶</span><figcaption>仙女變身</figcaption></figure>
+      <figure data-v="https://res.cloudinary.com/dmofz59ft/video/upload/v1775364733/%E5%AE%87%E5%AE%99%E5%8D%87%E5%A4%A9_jmwcqt.mp4">
+        <img loading="lazy" src="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_400,q_auto/v1775364733/%E5%AE%87%E5%AE%99%E5%8D%87%E5%A4%A9_jmwcqt.jpg" alt="宇宙升天"><span class="play">▶</span><figcaption>宇宙升天</figcaption></figure>
+      <figure data-v="https://res.cloudinary.com/dmofz59ft/video/upload/v1775364129/%E9%9B%9C%E8%AA%8C%E6%84%9F_xtdinr.mp4">
+        <img loading="lazy" src="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_400,q_auto/v1775364129/%E9%9B%9C%E8%AA%8C%E6%84%9F_xtdinr.jpg" alt="雜誌風"><span class="play">▶</span><figcaption>雜誌風</figcaption></figure>
+      <figure data-v="https://res.cloudinary.com/dmofz59ft/video/upload/v1775443330/%E8%B2%93%E8%B2%93%E8%87%AA%E7%94%B1_veacnf.mp4">
+        <img loading="lazy" src="https://res.cloudinary.com/dmofz59ft/video/upload/so_1,f_jpg,w_400,q_auto/v1775443330/%E8%B2%93%E8%B2%93%E8%87%AA%E7%94%B1_veacnf.jpg" alt="貓貓自由"><span class="play">▶</span><figcaption>貓貓自由</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ── 2. DrinkCam ── -->
+  <section class="work" id="drinkcam">
+    <div class="work-head">
+      <img class="icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/65/8f/74658f56-ae0a-f139-0d8b-17adeedae5a5/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="DrinkCam">
+      <h2>DrinkCam 多手機現場直播</h2>
+      <span class="tag live">App Store 上架</span>
+    </div>
+    <p class="lead">把賓客手上的手機變成現場攝影機：掃一下大螢幕的 QR Code，畫面就即時送到導播機，一鍵切換上大螢幕。不用直播團隊、不用架設備。</p>
+    <div class="grid media-right">
+      <div>
+        <ul class="points">
+          <li>手機 App（免費，App Store）＋ Mac 導播機（付費授權）兩端架構</li>
+          <li>掃 QR 3 秒加入、免註冊；最多 16 支手機同時推流，九宮格預覽一鍵切換</li>
+          <li>實測一台 M1 MacBook 帶 15 支手機順暢無延遲</li>
+          <li>抽獎模式、貼紙互動；影像只走現場區網，不上雲、不錄存</li>
+          <li>線上購買後自動發放簽章授權碼，另有免費試用版</li>
+        </ul>
+        <h3>技術</h3>
+        <div class="stack">
+          <span>iOS App</span><span>macOS 導播軟體</span><span>區網即時影像傳輸</span><span>數位簽章授權</span><span>綠界金流</span>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://apps.apple.com/tw/app/drinkcam/id6775170201" target="_blank" rel="noopener">App Store</a>
+          <a class="btn ghost" href="https://guestars.tw/drinkcam" target="_blank" rel="noopener">產品頁</a>
+        </div>
+      </div>
+      <div>
+        <video controls playsinline preload="metadata" poster="/videos/works/drinkcam-demo.jpg" src="/videos/works/drinkcam-demo.mp4"></video>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">實際婚宴現場：導播機操作、賓客手機畫面即時上大螢幕</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. 集卡冊 ── -->
+  <section class="work" id="binder">
+    <div class="work-head">
+      <img class="icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/59/f2/43/59f24377-e23a-239e-6a09-312de65a7276/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg" alt="集卡冊">
+      <h2>集卡冊</h2>
+      <span class="tag live">App Store 上架</span>
+    </div>
+    <p class="lead">給實體集換式卡牌玩家的數位收藏冊。把卡拍下來，AI 自動讀出系列與卡號，直接點亮在卡表上，不用再一張張手動輸入。</p>
+    <div class="shots">
+      <img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/6a/62/50/6a6250d2-a0d6-1b2f-9b30-43c1a6f4685b/01-home.png/392x696bb.jpg" alt="首頁">
+      <img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a9/7a/6e/a97a6e51-bb3d-27b7-dc05-74a2d59b2498/02-scan-result.png/392x696bb.jpg" alt="掃描結果">
+      <img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a1/22/b8/a122b862-eff9-cf44-a6a6-583b323f7c37/03-set-table.png/392x696bb.jpg" alt="系列卡表">
+      <img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/77/e5/4d/77e54da7-3fe0-5333-4788-00b8640f004c/04-card-detail.png/392x696bb.jpg" alt="卡片詳情">
+      <img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/70/4a/32/704a3217-0e17-7e9d-b037-01a26ecf73ca/05-family.png/392x696bb.jpg" alt="家庭共用">
+    </div>
+    <div class="grid" style="margin-top:20px;">
+      <div>
+        <ul class="points">
+          <li>雙模式辨識：單張用 iPhone 內建辨識約 2–3 秒、免連線；一次多張（最多 5 張）用 AI 辨識</li>
+          <li>完整系列卡表、品相與存放位置、參考市價、牌組缺卡計算</li>
+          <li>家庭共用：一本收藏冊全家一起集，小孩不用帳號也有自己的頁面</li>
+          <li>離線瀏覽；支援繁中、簡中、English</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="points">
+          <li>2026/10/2 上架，兩週內依使用者回饋迭代到 1.2 版</li>
+          <li>依使用者實際掃描的卡種持續擴充資料庫</li>
+          <li>App 內「請開發者喝咖啡」贊助（Apple 內購）</li>
+          <li>同時提供網頁版，Android 使用者也能用</li>
+        </ul>
+        <h3>技術</h3>
+        <div class="stack">
+          <span>iOS App</span><span>裝置端影像辨識</span><span>AI 視覺辨識</span><span>Web App</span><span>Vercel</span><span>Apple 內購</span>
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <a class="btn" href="https://apps.apple.com/tw/app/%E9%9B%86%E5%8D%A1%E5%86%8A/id6816697412" target="_blank" rel="noopener">App Store</a>
+      <a class="btn ghost" href="https://binder.guestars.app" target="_blank" rel="noopener">網頁版</a>
+    </div>
+  </section>
+
+  <!-- ── 4. 抓娃娃 ── -->
+  <section class="work" id="claw">
+    <div class="work-head">
+      <h2>Claw Machine Pro 抓娃娃機</h2>
+      <span class="tag dev">開發中</span>
+    </div>
+    <p class="lead">在瀏覽器就能玩的 3D 抓娃娃機：虛擬搖桿操控爪子、物理碰撞、獎品收藏相簿，手機和電腦都能直接開玩，不用下載。</p>
+    <div class="grid">
+      <div><img class="shot" loading="lazy" src="/images/works/clawmachine.jpg" alt="抓娃娃機遊戲畫面"></div>
+      <div>
+        <ul class="points">
+          <li>3D 場景與物理模擬，虛擬搖桿＋「抓」按鈕操作</li>
+          <li>獎品相簿、「我的獎品」收藏，可自訂新增獎品</li>
+          <li>網頁版免安裝，手機、電腦瀏覽器直接遊玩</li>
+        </ul>
+        <h3>技術</h3>
+        <div class="stack"><span>Unity</span><span>WebGL</span><span>3D 物理</span><span>Vercel</span></div>
+        <div class="links">
+          <a class="btn" href="https://clawmachine-backend.vercel.app/play/" target="_blank" rel="noopener">線上試玩</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © 2026 阿斌 Pin Shun Wu ・ 斌先生工作室 ・ <a href="mailto:wubskimo0424@gmail.com">wubskimo0424@gmail.com</a>
+</footer>
+
+<script>
+  // GUESTARS 主題：點擊縮圖播放，同時只播一支
+  document.querySelectorAll('#themes figure').forEach(fig => {
+    fig.addEventListener('click', () => {
+      document.querySelectorAll('#themes video').forEach(v => {
+        const f = v.closest('figure'); v.replaceWith(f._img); f.querySelector('.play').style.display = '';
+      });
+      const img = fig.querySelector('img');
+      if (!img) return;
+      const v = document.createElement('video');
+      v.src = fig.dataset.v; v.autoplay = true; v.muted = true; v.playsInline = true; v.controls = false; v.loop = true;
+      fig._img = img; img.replaceWith(v); fig.querySelector('.play').style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>
